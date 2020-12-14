@@ -42,24 +42,13 @@
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
         var initESW = function (gslbBaseURL) {
-            embedded_svc.settings.displayHelpButton = true; //Ou falso
-            embedded_svc.settings.language = ''; //Por exemplo, insira "pt" ou "pt-BR"
-
-            //embedded_svc.settings.defaultMinimizedText = '...'; //(Assume como padrão o Chat com um especialista)
-            //embedded_svc.settings.disabledMinimizedText = '...'; //(Assume como padrão Agente off-line)
-
-            //embedded_svc.settings.loadingText = ''; //(Assume como padrão Carregando)
-            //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Define o domínio de sua implantação para que seus visitantes possam navegar em subdomínios durante uma sessão de chat)
-
-            // Configurações para Chat
-            //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-            // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-            // Returns a valid button ID.
-            //};
-            //embedded_svc.settings.prepopulatedPrechatFields = {}; //Define o preenchimento automático de campos de formulário de pré-chat
-            //embedded_svc.settings.fallbackRouting = []; //Uma matriz de IDs de botão, IDs de usuário ou userId_buttonId
-            //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Padronizado para Entre em contato conosco)
-
+            embedded_svc.settings.displayHelpButton = true;
+            embedded_svc.settings.language = 'pt-BR';
+            embedded_svc.settings.avatarImgURL = 'https://grupoltm--ltmhomolog--c.documentforce.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=06803000000a2jV&operationContext=DELIVERY&contentId=05T03000001LJ8K&page=0&d=/a/030000004Ctx/GRbTTEEQoaiAYyOhMbIB78tl18Bpo_T6qOphAN6Z104&oid=00D030000004bFA&dpt=null&viewId='
+            embedded_svc.settings.chatbotAvatarImgURL = 'https://grupoltm--ltmhomolog--c.documentforce.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=06803000000a2jV&operationContext=DELIVERY&contentId=05T03000001LJ8K&page=0&d=/a/030000004Ctx/GRbTTEEQoaiAYyOhMbIB78tl18Bpo_T6qOphAN6Z104&oid=00D030000004bFA&dpt=null&viewId='
+            embedded_svc.settings.defaultMinimizedText = 'Fale conosco'; //(Assume como padrão o Chat com um especialista)
+            embedded_svc.settings.disabledMinimizedText = 'Agente off-line'; //(Assume como padrão Agente off-line)
+            embedded_svc.settings.loadingText = 'Carregando...'; //(Assume como padrão Carregando)
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
 
