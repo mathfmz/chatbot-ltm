@@ -26,7 +26,7 @@
 
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
-        var campaignId = "81";
+        var campaignId = 81;
 
         var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true;
@@ -45,7 +45,7 @@
                 "getCampaignId",
                 function(event) {
                     alert(81);
-                    event.detail.callback("81");
+                    event.detail.callback(campaignId);
                 },
                 false
             );
