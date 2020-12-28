@@ -28,7 +28,7 @@
     <script type='text/javascript'>
         var campaignId = "";
 
-        var initESW = function (gslbBaseURL) {
+        var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true;
             embedded_svc.settings.language = 'pt-BR';
             embedded_svc.settings.avatarImgURL = 'https://grupoltm--ltmhomolog--c.documentforce.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=06803000000a2jV&operationContext=DELIVERY&contentId=05T03000001LJ8K&page=0&d=/a/030000004Ctx/GRbTTEEQoaiAYyOhMbIB78tl18Bpo_T6qOphAN6Z104&oid=00D030000004bFA&dpt=null&viewId='
@@ -59,17 +59,17 @@
             );
 
             embedded_svc.init(
-              'https://grupoltm--chatbot.my.salesforce.com',
-              'https://chatbot-ltmloyaltyvip.cs21.force.com/chatbots',
+              'https://grupoltm--developmen.my.salesforce.com',
+              'https://developmen-ltmloyaltyvip.cs69.force.com/Customerltm',
               gslbBaseURL,
-              '00Dq0000000EbqY',
-              'ChatGeral',
+              '00D2D000000D7US',
+              'Fila_Chatbot',
               {
                 baseLiveAgentContentURL: 'https://c.la4-c1cs-phx.salesforceliveagent.com/content',
                 deploymentId: '5721V000000M49L',
-                buttonId: '5731L000000TY3f',
+                buttonId: '5732D0000004G5z',
                 baseLiveAgentURL: 'https://d.la4-c1cs-phx.salesforceliveagent.com/chat',
-                eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1L000000000QUAQ_17668b6f37a',
+                eswLiveAgentDevName: 'Fila_Chatbot',
                 isOfflineSupportEnabled: false
               }
             );
@@ -77,8 +77,8 @@
 
         if (!window.embedded_svc) {
             var s = document.createElement('script');
-            s.setAttribute('src', 'https://grupoltm--ltmhomolog.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-            s.onload = function () {
+            s.setAttribute('src', 'https://grupoltm--developmen.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+            s.onload = function() {
                 initESW(null);
             };
             document.body.appendChild(s);
