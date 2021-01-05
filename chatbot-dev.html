@@ -26,6 +26,7 @@
 
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
+        var authProvider = "cognito";
         var campaignId = 81;
 
         var initESW = function(gslbBaseURL) {
@@ -42,9 +43,9 @@
             embedded_svc.settings.extraPrechatFormDetails = [{"label":"Id Info. Cognito", "transcriptFields": ["IdInfoCognito__c"]}];
             
             document.addEventListener(
-                "getCampaignId",
+                "getAuthInfo",
                 function(event) {
-                    event.detail.callback(campaignId);
+                    event.detail.callback(authProvider, campaignId);
                 },
                 false
             );
