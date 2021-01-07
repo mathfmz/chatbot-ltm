@@ -27,7 +27,7 @@
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
         var initLogin = false; //Values: true or false
-        var authProvider = "default"; //Values: default, panaclube, compra-agora, premix
+        var dialogs = "default"; //Values: default, panaclube, compra-agora, premix
         var campaignId = 81;
 
         var initESW = function(gslbBaseURL) {
@@ -49,14 +49,14 @@
                 {
                     "label": "AuthProvider",
                     "transcriptFields": ["AuthProvider__c"],
-                    "value": authProvider
+                    "value": dialogs
                 }
             ];
             
             document.addEventListener(
                 "getAuthInfo",
                 function(event) {
-                    event.detail.callback(initLogin, authProvider, campaignId);
+                    event.detail.callback(initLogin, campaignId);
                 },
                 false
             );
