@@ -81,25 +81,25 @@
             );
 
             embedded_svc.init(
-              'https://grupoltm--developmen.my.salesforce.com',
-              'https://developmen-ltmloyaltyvip.cs69.force.com/Customerltm',
-              gslbBaseURL,
-              '00D2D000000D7US',
-              'Fila_Chatbot',
-              {
-                baseLiveAgentContentURL: 'https://c.la4-c1cs-phx.salesforceliveagent.com/content',
-                deploymentId: '5721V000000M49L',
-                buttonId: '5732D0000004G5z',
-                baseLiveAgentURL: 'https://d.la4-c1cs-phx.salesforceliveagent.com/chat',
-                eswLiveAgentDevName: 'Fila_Chatbot',
-                isOfflineSupportEnabled: false
-              }
+                'https://grupoltm--chatbug.my.salesforce.com',
+                'https://chatbug-ltmloyaltyvip.cs16.force.com/chatbots',
+                gslbBaseURL,
+                '00Df0000003fHjN',
+                'ChatGeral',
+                {
+                    baseLiveAgentContentURL: 'https://c.la1-c1cs-ord.salesforceliveagent.com/content',
+                    deploymentId: '5721V000000M49L',
+                    buttonId: '5731L000000TY3f',
+                    baseLiveAgentURL: 'https://d.la1-c1cs-ord.salesforceliveagent.com/chat',
+                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1L000000000QUAQ_17668b6f37a',
+                    isOfflineSupportEnabled: false
+                }
             );
           };
 
         if (!window.embedded_svc) {
             var s = document.createElement('script');
-            s.setAttribute('src', 'https://grupoltm--developmen.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		    s.setAttribute('src', 'https://grupoltm--chatbug.my.salesforce.com/embeddedservice/5.0/esw.min.js');
             s.onload = function() {
                 initESW(null);
             };
