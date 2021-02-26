@@ -57,6 +57,10 @@
                     "transcriptFields": ["IdInfoCognito__c"]
                 },
                 {
+                    "label": "Id Campanha", 
+                    "transcriptFields": ["Campanha_LTM__c"]
+                },
+                {
                     "label": "AuthProvider",
                     "transcriptFields": ["AuthProvider__c"],
                     "value": dialogs
@@ -75,6 +79,7 @@
                 "setCustomField",
                 function(event) {
                     embedded_svc.settings.extraPrechatFormDetails[0].value = event.detail.idInfoCognito;
+                    embedded_svc.settings.extraPrechatFormDetails[1].value = event.detail.idCampanha;
                     event.detail.callback();
                 },
                 false
