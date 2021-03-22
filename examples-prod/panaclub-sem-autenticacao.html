@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LTM Chat - Homol</title>
+</head>
+
+<body>
+    <style type='text/css'>
+        .embeddedServiceHelpButton .helpButton .uiButton {
+            background-color: #005290;
+            font-family: "Salesforce Sans", sans-serif;
+        }
+
+        .embeddedServiceHelpButton .helpButton .uiButton:focus {
+            outline: 1px solid #005290;
+        }
+
+        @font-face {
+            font-family: 'Salesforce Sans';
+            src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
+                url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
+        }
+    </style>
+
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+    <script type='text/javascript'>
+        // initLogin: Caso o chat esteja implantado na área logada, setar true, se for área deslogada, setar false
+        var initLogin = false;
+        
+        // dialogs: Qual fluxo de diálogos o bot deverá seguir (default, panaclube-logado, panaclube-deslogado, compra-agora, premix, premmiar)
+        var dialogs = "panaclube-deslogado";
+        
+        // campaignId: Id da Campanha
+        var campaignId = 42;
+        
+        // buttonsParams: Params dos botões do Pré-Chat
+        var buttonsParams = {'logged' : {'enabled' : false, 'text' : ''}, 
+                             'offline' : {'enabled' : true, 'text' : 'Iniciar Atendimento'} 
+                            };
+
+        var initESW = function(gslbBaseURL) {
+            embedded_svc.settings.displayHelpButton = true;
+            embedded_svc.settings.language = 'pt-BR';
+            embedded_svc.settings.avatarImgURL = 'https://grupoltm--ltmhomolog--c.documentforce.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=06803000000a2jV&operationContext=DELIVERY&contentId=05T03000001LJ8K&page=0&d=/a/030000004Ctx/GRbTTEEQoaiAYyOhMbIB78tl18Bpo_T6qOphAN6Z104&oid=00D030000004bFA&dpt=null&viewId='
+            embedded_svc.settings.chatbotAvatarImgURL = 'https://grupoltm--ltmhomolog--c.documentforce.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=06803000000a2jV&operationContext=DELIVERY&contentId=05T03000001LJ8K&page=0&d=/a/030000004Ctx/GRbTTEEQoaiAYyOhMbIB78tl18Bpo_T6qOphAN6Z104&oid=00D030000004bFA&dpt=null&viewId='
+            embedded_svc.settings.defaultMinimizedText = 'Fale conosco'; //(Assume como padrão o Chat com um especialista)
+            embedded_svc.settings.disabledMinimizedText = 'Agente off-line'; //(Assume como padrão Agente off-line)
+            embedded_svc.settings.loadingText = 'Carregando...'; //(Assume como padrão Carregando)
+            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+            embedded_svc.settings.entryFeature = 'LiveAgent';
+
+            embedded_svc.settings.extraPrechatFormDetails = [
+                {
+                    "label": "Id Info. Cognito", 
+                    "transcriptFields": ["IdInfoCognito__c"]
+                },
+                {
+                    "label": "AuthProvider",
+                    "transcriptFields": ["AuthProvider__c"],
+                    "value": dialogs
+                }
+            ];
+            
+            document.addEventListener(
+                "getAuthInfo",
+                function(event) {
+                    event.detail.callback(initLogin, campaignId, buttonsParams);
+                },
+                false
+            );
+
+            document.addEventListener(
+                "setCustomField",
+                function(event) {
+                    embedded_svc.settings.extraPrechatFormDetails[0].value = event.detail.idInfoCognito;
+                    event.detail.callback();
+                },
+                false
+            );
+
+            embedded_svc.init(
+                'https://grupoltm.my.salesforce.com',
+                'https://ltmloyaltyvip.force.com/chatbots',
+                gslbBaseURL,
+                '00Df4000000lfSo',
+                'Chatbot_LTM',
+                {
+                    baseLiveAgentContentURL: 'https://c.la2-c1-ord.salesforceliveagent.com/content',
+                    deploymentId: '5721V000000M49L',
+                    buttonId: '5731L000000D7kw',
+                    baseLiveAgentURL: 'https://d.la2-c1-ord.salesforceliveagent.com/chat',
+                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1L0000008OVFUA2_1785b438943',
+                    isOfflineSupportEnabled: false
+                }
+            );
+        };
+
+        if (!window.embedded_svc) {
+            var s = document.createElement('script');
+            s.setAttribute('src', 'https://grupoltm.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+            s.onload = function() {
+                initESW(null);
+            };
+            document.body.appendChild(s);
+        } else {
+            initESW('https://service.force.com');
+        }
+    </script>
+</body>
+
+</html>
